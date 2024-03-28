@@ -5,6 +5,8 @@ import com.invoice.demo.Exception.InvoiceNotFoundException;
 import com.invoice.demo.Repository.InvoiceRepo;
 import com.invoice.demo.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +23,8 @@ public class InvoiceImp implements InvoiceService {
     }
 
     @Override
-    public List<Invoice> getAllInvoices() {
-        return repo.findAll();
+    public Page<Invoice> getAllInvoices(Pageable pageable) {
+        return repo.findAll(pageable);
     }
 
     @Override
